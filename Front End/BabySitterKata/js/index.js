@@ -18,19 +18,16 @@ function onClickStartWageCalculatorButton(){
 
 function onStartValueChange(time){
     let returnTime = handleTimeChange(time);
-    console.log(returnTime);
     return returnTime;
 }
 
 function onDownTimeValueChange(time){
     let returnTime = handleTimeChange(time);
-    console.log(returnTime);
     return returnTime;
 }
 
 function onEndTimeValueChange(time){
     let returnTime = handleTimeChange(time);
-    console.log(returnTime);
     return returnTime;
 }
 
@@ -48,16 +45,10 @@ function handleTimeChange(time){
 }
 
 function onFireWageCalculatorButton() {
-    debugger
     let startValue = onStartValueChange($('#start-time-value').val());
     let downTimeValue = onDownTimeValueChange($('#down-time-value').val());
     let endTimeValue = onEndTimeValueChange($('#end-time-value').val());
-    let data = JSON.stringify({
-        "startTime": startValue,
-        "downTime": downTimeValue,
-        "endTime": endTimeValue
-    });
-    console.log(data);
+
     $.ajax({
         type: 'POST',
         url: '',
@@ -71,10 +62,10 @@ function onFireWageCalculatorButton() {
         }),
 
         success: function(data, textStatus, jQxhr){
-            console.log(data);
+            // return call will go here
         },
+
         error: function(jQxhr, textStatus, errorThrown){
-            console.log(data);
             console.log(errorThrown);
         }
     })
