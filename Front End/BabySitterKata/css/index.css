@@ -1,0 +1,33 @@
+body{
+    text-align: center;
+}
+
+h1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 20px 0px 20px 0px;
+}
+hr{
+    max-width: 1000px;
+}
+
+#box-one{
+    height: 100px;
+}
+
+#box-one, #box-two{
+    max-width: 700px;
+    padding: 50px 50px 50px 50px;
+    margin: 40px auto 50px auto;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    text-align: center;
+  
+    display: block;
+    font-family: Roboto;
+    background-color: rgba(255, 255, 255, 0.77);  
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 80px 0px;
+}
+
+#box-two{
+    height: 50px;
+}
