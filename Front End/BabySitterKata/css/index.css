@@ -14,6 +14,10 @@ hr{
     height: 100px;
 }
 
+#box-two{
+    height: 500px;
+}
+
 #box-one, #box-two{
     max-width: 700px;
     padding: 50px 50px 50px 50px;
@@ -28,6 +32,6 @@ hr{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 80px 0px;
 }
 
-#box-two{
-    height: 50px;
+#fire-wage-calculator-button{
+    margin-top: 10px;
 }

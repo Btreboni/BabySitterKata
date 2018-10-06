@@ -1,5 +1,3 @@
-let num = 1;
-
 $(document).ready(function(){
     runProgram();
 });
