@@ -6,6 +6,7 @@ function runProgram(){
     hideBoxTwo();
     onClickStartWageCalculatorButton();
     onStartValueChange();
+    onFireWageCalculatorButton();
 }
 
 function onClickStartWageCalculatorButton(){
@@ -44,6 +45,39 @@ function handleTimeChange(time){
         let displayTime = hours + ":" + minutes + " " + suffix;
         return displayTime;
     }
+}
+
+function onFireWageCalculatorButton() {
+    debugger
+    let startValue = onStartValueChange($('#start-time-value').val());
+    let downTimeValue = onDownTimeValueChange($('#down-time-value').val());
+    let endTimeValue = onEndTimeValueChange($('#end-time-value').val());
+    let data = JSON.stringify({
+        "startTime": startValue,
+        "downTime": downTimeValue,
+        "endTime": endTimeValue
+    });
+    console.log(data);
+    $.ajax({
+        type: 'POST',
+        url: '',
+        dataType: 'json',
+        contentType: 'application/json',
+        processData: false, 
+        data: JSON.stringify({
+            "startTime": startValue,
+            "downTime": downTimeValue,
+            "endTime": endTimeValue
+        }),
+
+        success: function(data, textStatus, jQxhr){
+            console.log(data);
+        },
+        error: function(jQxhr, textStatus, errorThrown){
+            console.log(data);
+            console.log(errorThrown);
+        }
+    })
 }
 
 function hideBoxOne(){
