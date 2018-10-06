@@ -5,6 +5,7 @@ $(document).ready(function(){
 function runProgram(){
     hideBoxTwo();
     onClickStartWageCalculatorButton();
+    onStartValueChange();
 }
 
 function onClickStartWageCalculatorButton(){
@@ -12,6 +13,37 @@ function onClickStartWageCalculatorButton(){
         hideBoxOne();
         showBoxTwo();
     })
+}
+
+function onStartValueChange(time){
+    let returnTime = handleTimeChange(time);
+    console.log(returnTime);
+    return returnTime;
+}
+
+function onDownTimeValueChange(time){
+    let returnTime = handleTimeChange(time);
+    console.log(returnTime);
+    return returnTime;
+}
+
+function onEndTimeValueChange(time){
+    let returnTime = handleTimeChange(time);
+    console.log(returnTime);
+    return returnTime;
+}
+
+function handleTimeChange(time){
+    if (time.value !== "") {
+        let hours = time.split(":")[0];
+        let minutes = time.split(":")[1];
+        let suffix = hours >= 12 ? "pm" : "am";
+        hours = hours % 12 || 12;
+        hours = hours < 10 ? "0" + hours : hours;
+    
+        let displayTime = hours + ":" + minutes + " " + suffix;
+        return displayTime;
+    }
 }
 
 function hideBoxOne(){
