@@ -5,8 +5,6 @@ $(document).ready(function(){
 function runProgram(){
     hideBoxTwo();
     onClickStartWageCalculatorButton();
-    onStartValueChange();
-    onFireWageCalculatorButton();
 }
 
 function onClickStartWageCalculatorButton(){
@@ -21,11 +19,12 @@ function returnTime(time){
 }
 
 function onFireWageCalculatorButton() {
-    let startValue = returnTime($('#start-time-value').val());
-    let downTimeValue = returnTime($('#down-time-value').val());
-    let endTimeValue = returnTime($('#end-time-value').val());
+    let startValue = Number(returnTime($('#start-time-value').val()));
+    let downTimeValue = Number(returnTime($('#down-time-value').val()));
+    let endTimeValue = Number(returnTime($('#end-time-value').val()));
+    
     let validateHours = startValue > downTimeValue || startValue > endTimeValue || downTimeValue > endTimeValue;
-    let areHoursNullOrEmpty = tartValue === "" || endTimeValue === "" || downTimeValue === "";
+    let areHoursNullOrEmpty = startValue === "" || endTimeValue === "" || downTimeValue === "";
 
     if(validateHours){
         alert("Sorry, an error occured. Please make sure that your hourly time-line is correct");
@@ -35,9 +34,17 @@ function onFireWageCalculatorButton() {
         alert("Sorry, an error occured. Please make sure that all your start, down, and end times all have values.");
     }
 
+    let data= JSON.stringify({
+        "startTime": startValue,
+        "downTime": downTimeValue,
+        "endTime": endTimeValue
+    })
+
+    console.log(data);
+
     $.ajax({
         type: 'POST',
-        url: '',
+        url: 'https://localhost:5001/api/calculate/wages',
         dataType: 'json',
         contentType: 'application/json',
         processData: false, 
@@ -48,7 +55,7 @@ function onFireWageCalculatorButton() {
         }),
 
         success: function(data, textStatus, jQxhr){
-            // return call will go here
+            console.log(data);
         },
 
         error: function(jQxhr, textStatus, errorThrown){

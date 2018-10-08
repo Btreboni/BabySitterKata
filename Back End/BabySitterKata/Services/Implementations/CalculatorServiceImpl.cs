@@ -6,9 +6,9 @@ namespace BabySitterKata.Services.Implementations
 {
     public class CalculatorServiceImpl : ICalculatorService
     {
-        private int startToDowntimeRate = 12;
-        private int downtimeToMidnightRate = 8;
-        private int afterMidnightRate = 16;
+        private double startToDowntimeRate = 12;
+        private double downtimeToMidnightRate = 8;
+        private double afterMidnightRate = 16;
 
         /// <summary>
         /// Calculates the babysitters wage, using the start time, the time the children
@@ -19,19 +19,20 @@ namespace BabySitterKata.Services.Implementations
         public string CalculateNightlyWage(HourlyDataDto data)
         {
             //start time to down time wage, checking to see if downtime was after midnight
-            var startToDownTimeWage = data.DownTime > 12 
-                ? calculateStartToDownTimeIfDownTimeIsAfterMidnight(data.DownTime, data.StartTime)
-                : calculateStartToDownTimeWage(data.DownTime, data.StartTime);
+            var startToDownTimeWage = data.DownTime > 12
+                ? CalculateStartToDownTimeIfDownTimeIsAfterMidnight(data.DownTime, data.StartTime)
+                : CalculateStartToDownTimeWage(data.DownTime, data.StartTime);
 
             //down time to midnight wage, checking to see if downtime was after midnight
-            var downTimeToMidnightWage = calculateDownTimeToMidnightWage(data.DownTime);
+            var downTimeToMidnightWage = CalculateDownTimeToMidnightWage(data.DownTime);
 
             //after midnight wage
-            var afterMidnightWage = calculateAfterMidnightWage(data.EndTime);
+            var afterMidnightWage = CalculateAfterMidnightWage(data.EndTime);
 
             //add up wages
-            var wageToReturn = startToDownTimeWage + downTimeToMidnightWage + afterMidnightWage;
-
+            var wage = startToDownTimeWage + downTimeToMidnightWage + afterMidnightWage;
+            var wageToDecimal = Convert.ToDecimal(wage);
+            var wageToReturn = $"${wageToDecimal}";
 
             return wageToReturn;
         }
@@ -43,7 +44,7 @@ namespace BabySitterKata.Services.Implementations
         /// <returns>The start to down time wage.</returns>
         /// <param name="downTime">Down time.</param>
         /// <param name="startTime">Start time.</param>
-        private int calculateStartToDownTimeWage(int downTime, int startTime){
+        public double CalculateStartToDownTimeWage(double downTime, double startTime){
             var wage = (downTime - startTime) * startToDowntimeRate;
             return wage;
         }
@@ -55,9 +56,9 @@ namespace BabySitterKata.Services.Implementations
         /// <returns>The start to down time if down time is after midnight.</returns>
         /// <param name="downTime">Down time.</param>
         /// <param name="startTime">Start time.</param>
-        private int calculateStartToDownTimeIfDownTimeIsAfterMidnight(int downTime, int startTime){
+        public double CalculateStartToDownTimeIfDownTimeIsAfterMidnight(double downTime, double startTime){
             var startTimeToMidnight = (12 - startTime) * startToDowntimeRate;
-            var afterMidnight = calculateAfterMidnightWage(downTime);
+            var afterMidnight = CalculateAfterMidnightWage(downTime);
             var wage = startTimeToMidnight + afterMidnight;
             return wage;
         }
@@ -68,7 +69,7 @@ namespace BabySitterKata.Services.Implementations
         /// </summary>
         /// <returns>The down time to midnight wage.</returns>
         /// <param name="downTime">Down time.</param>
-        private int calculateDownTimeToMidnightWage(int downTime){
+        public double CalculateDownTimeToMidnightWage(double downTime){
             var wage = downTime > 12 ? 0 : (12 - downTime) * downtimeToMidnightRate;
             return wage;
         }
@@ -78,7 +79,7 @@ namespace BabySitterKata.Services.Implementations
         /// </summary>
         /// <returns>The after midnight wage.</returns>
         /// <param name="endTime">End time.</param>
-        private int calculateAfterMidnightWage(int endTime){
+        public double CalculateAfterMidnightWage(double endTime){
             var wage = endTime < 12 ? 0 : (endTime - 12) * afterMidnightRate;
             return wage;
         }

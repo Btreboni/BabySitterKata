@@ -18,5 +18,23 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\ValuesController.cs" />
+    <Compile Remove="BabySitterKataUnitTests\BabySitterTests.cs" />
+    <Compile Remove="BabySitterKataUnitTests\MyClass.cs" />
+    <Compile Remove="BabySitterKataUnitTests\Properties\AssemblyInfo.cs" />
+    <Compile Remove="BabySitterKataUnitTests\BabySitterTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.iOS">
+      <HintPath>..\..\..\..\..\..\..\Library\Frameworks\Xamarin.iOS.framework\Versions\Current\lib\mono\Xamarin.iOS\Xamarin.iOS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="BabySitterKataUnitTests\obj\Debug\BabySitterKataUnitTests.csprojAssemblyReference.cache" />
+    <None Remove="BabySitterKataUnitTests\obj\Debug\BabySitterKataUnitTests.csproj.CoreCompileInputs.cache" />
+    <None Remove="BabySitterKataUnitTests\obj\Debug\BabySitterKataUnitTests.csproj.FileListAbsolute.txt" />
+    <None Remove="BabySitterKataUnitTests\obj\Debug\BabySitterKataUnitTests.csproj.CoreCompileInputs.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="BabySitterKataUnitTests\packages.config" />
   </ItemGroup>
 </Project>
