@@ -8,7 +8,9 @@ namespace BabySitterKata.Services.Implementations
     {
         public string CalculateNightlyWage(HourlyDataDto data)
         {
-            throw new NotImplementedException();
+            var debugTest = "";
+
+            return debugTest;
         }
     }
 }
