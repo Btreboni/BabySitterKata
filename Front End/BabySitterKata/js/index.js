@@ -13,7 +13,7 @@ function onClickStartWageCalculatorButton(){
     $("#start-wage-calculator-button").click(function(){
         hideBoxOne();
         showBoxTwo();
-    })
+    });
 }
 
 function returnTime(time){
@@ -32,7 +32,7 @@ function onFireWageCalculatorButton() {
     }
 
     if(areHoursNullOrEmpty){
-        alert("Sorry, an error occured. Please make sure that all your start, down, and end times all have values.")
+        alert("Sorry, an error occured. Please make sure that all your start, down, and end times all have values.");
     }
 
     $.ajax({
@@ -54,7 +54,7 @@ function onFireWageCalculatorButton() {
         error: function(jQxhr, textStatus, errorThrown){
             console.log(errorThrown);
         }
-    })
+    });
 }
 
 function hideBoxOne(){

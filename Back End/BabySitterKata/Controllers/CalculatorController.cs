@@ -14,16 +14,6 @@ namespace BabySitterKata.Controllers
             _calculatorService = calculatorService;
         }
 
-        //// GET api/calculate
-        //[HttpGet]
-        //[ProducesResponseType(typeof(string), statusCode: 200)]
-        //public IActionResult GetLaunchDivisions()
-        //{
-        //    var test = "TESTING";
-
-        //    return Ok(test);
-        //}
-
         // POST api/calculate/wages
         [HttpPost("wages")]
         [ProducesResponseType(typeof(string), statusCode: 201)]
