@@ -30,4 +30,4 @@ The backend already accounts for Cors, so you shouldn't have any cross-origin is
 
 Thank you for checking out my program!
 
-_Burke
+_Burke Treboni
