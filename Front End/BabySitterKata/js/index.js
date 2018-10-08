@@ -1,9 +1,12 @@
+let wageRow = $('#wage-row');
+
 $(document).ready(function(){
     runProgram();
 });
 
 function runProgram(){
     hideBoxTwo();
+    hideBoxThree();
     onClickStartWageCalculatorButton();
 }
 
@@ -24,23 +27,17 @@ function onFireWageCalculatorButton() {
     let endTimeValue = Number(returnTime($('#end-time-value').val()));
     
     let validateHours = startValue > downTimeValue || startValue > endTimeValue || downTimeValue > endTimeValue;
-    let areHoursNullOrEmpty = startValue === "" || endTimeValue === "" || downTimeValue === "";
+    let areHoursNullOrEmpty = startValue === 0 || endTimeValue === 0 || downTimeValue === 0;
 
     if(validateHours){
-        alert("Sorry, an error occured. Please make sure that your hourly time-line is correct");
+        return alert("Sorry, an error occured. Please make sure that your hourly time-line is correct");
     }
 
     if(areHoursNullOrEmpty){
-        alert("Sorry, an error occured. Please make sure that all your start, down, and end times all have values.");
+        return alert("Sorry, an error occured. Please make sure that all your start, down, and end times all have values.");
     }
 
-    let data= JSON.stringify({
-        "startTime": startValue,
-        "downTime": downTimeValue,
-        "endTime": endTimeValue
-    })
-
-    console.log(data);
+    wageRow.empty();
 
     $.ajax({
         type: 'POST',
@@ -55,13 +52,22 @@ function onFireWageCalculatorButton() {
         }),
 
         success: function(data, textStatus, jQxhr){
-            console.log(data);
+            hideBoxTwo();
+            showBoxThree();
+            let wageToShow = '<h1>' + data + '</h1>'
+            wageRow.append(wageToShow);
         },
 
         error: function(jQxhr, textStatus, errorThrown){
             console.log(errorThrown);
         }
     });
+}
+
+function onFireReCalculateButton(){
+    hideBoxThree();
+    clearValues();
+    showBoxTwo();
 }
 
 function hideBoxOne(){
@@ -74,4 +80,30 @@ function showBoxTwo(){
 
 function hideBoxTwo(){
     $("#box-two").hide();
+}
+
+function showBoxThree(){
+    $('#box-three').show();
+}
+
+function hideBoxThree(){
+    $('#box-three').hide();
+}
+
+function clearValues(){
+    clearStartValue();
+    clearDownTimeValue();
+    clearEndTimeValue();
+}
+
+function clearStartValue(){
+    $('#start-time-value').val('');
+}
+
+function clearDownTimeValue(){
+    $('#down-time-value').val('');
+}
+
+function clearEndTimeValue(){
+    $('#end-time-value').val('');
 }
