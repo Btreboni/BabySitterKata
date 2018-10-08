@@ -16,38 +16,24 @@ function onClickStartWageCalculatorButton(){
     })
 }
 
-function onStartValueChange(time){
-    let returnTime = handleTimeChange(time);
-    return returnTime;
-}
-
-function onDownTimeValueChange(time){
-    let returnTime = handleTimeChange(time);
-    return returnTime;
-}
-
-function onEndTimeValueChange(time){
-    let returnTime = handleTimeChange(time);
-    return returnTime;
-}
-
-function handleTimeChange(time){
-    if (time.value !== "") {
-        let hours = time.split(":")[0];
-        let minutes = time.split(":")[1];
-        let suffix = hours >= 12 ? "pm" : "am";
-        hours = hours % 12 || 12;
-        hours = hours < 10 ? "0" + hours : hours;
-    
-        let displayTime = hours + ":" + minutes + " " + suffix;
-        return displayTime;
-    }
+function returnTime(time){
+    return time;
 }
 
 function onFireWageCalculatorButton() {
-    let startValue = onStartValueChange($('#start-time-value').val());
-    let downTimeValue = onDownTimeValueChange($('#down-time-value').val());
-    let endTimeValue = onEndTimeValueChange($('#end-time-value').val());
+    let startValue = returnTime($('#start-time-value').val());
+    let downTimeValue = returnTime($('#down-time-value').val());
+    let endTimeValue = returnTime($('#end-time-value').val());
+    let validateHours = startValue > downTimeValue || startValue > endTimeValue || downTimeValue > endTimeValue;
+    let areHoursNullOrEmpty = tartValue === "" || endTimeValue === "" || downTimeValue === "";
+
+    if(validateHours){
+        alert("Sorry, an error occured. Please make sure that your hourly time-line is correct");
+    }
+
+    if(areHoursNullOrEmpty){
+        alert("Sorry, an error occured. Please make sure that all your start, down, and end times all have values.")
+    }
 
     $.ajax({
         type: 'POST',

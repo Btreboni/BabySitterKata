@@ -6,12 +6,12 @@ namespace BabySitterKata.Models
     public class HourlyDataDto
     {
         [JsonProperty("startTime")]
-        public string StartTime { get; set; }
+        public int StartTime { get; set; }
 
         [JsonProperty("downTime")]
-        public string DownTime { get; set; }
+        public int DownTime { get; set; }
 
         [JsonProperty("endTime")]
-        public string EndTime { get; set; }
+        public int EndTime { get; set; }
     }
 }

@@ -21,28 +21,103 @@
 			<div id="box-two">
 				<div>
 					<h3>Enter your start time</h3>
-					<input type="time" 
-						placeholder="Time" 
+					<select onchange="onStartValueChange(this.value)"
+						placehlder=""
 						name="startValueTime" 
 						id="start-time-value" 
-						onchange="onStartValueChange(this.value)"
-						/>
+						>
+							<option value=""></option>
+							<option value="5">5pm</option>
+							<option value="5.5">5:30pm</option>
+							<option value="6">6pm</option>
+							<option value="6.5">6:30pm</option>
+							<option value="7">7pm</option>
+							<option value="7.5">7:30pm</option>
+							<option value="8">8pm</option>
+							<option value="8.5">8:30pm</option>
+							<option value="9">9pm</option>
+							<option value="9.5">9:30pm</option>
+							<option value="10">10pm</option>
+							<option value="10.5">10:30pm</option>
+							<option value="11">11pm</option>
+							<option value="11.5">11:30pm</option>
+							<option value="12">12am</option>
+							<option value="12.5">12:30am</option>
+							<option value="13">1am</option>
+							<option value="13.5">1:30am</option>
+							<option value="14">2am</option>
+							<option value="14.5">2:30am</option>
+							<option value="15">3am</option>
+							<option value="15.5">3:30am</option>
+							<option value="16">4am</option>
+							<option value="16.5">4:30am</option>
+						</select>
 					<br>
 					<h3>Enter what time you will put the children down</h3>
-					<input type="time" 
-						placeholder="Time"
+					<select onchange="onDownTimeValueChange(this.value)"
+						placehlder=""
 						name="downTimeValue"
 						id="down-time-value"
-						onchange="onDownTimeValueChange(this.value)" 
-						/>
+						>
+							<option value=""></option>
+							<option value="5">5pm</option>
+							<option value="5.5">5:30pm</option>
+							<option value="6">6pm</option>
+							<option value="6.5">6:30pm</option>
+							<option value="7">7pm</option>
+							<option value="7.5">7:30pm</option>
+							<option value="8">8pm</option>
+							<option value="8.5">8:30pm</option>
+							<option value="9">9pm</option>
+							<option value="9.5">9:30pm</option>
+							<option value="10">10pm</option>
+							<option value="10.5">10:30pm</option>
+							<option value="11">11pm</option>
+							<option value="11.5">11:30pm</option>
+							<option value="12">12am</option>
+							<option value="12.5">12:30am</option>
+							<option value="13">1am</option>
+							<option value="13.5">1:30am</option>
+							<option value="14">2am</option>
+							<option value="14.5">2:30am</option>
+							<option value="15">3am</option>
+							<option value="15.5">3:30am</option>
+							<option value="16">4am</option>
+							<option value="16.5">4:30am</option>
+						</select>
 					<br>
-					<h3>Enter what end time for the night</h3>
-					<input type="time" 
-						placeholder="Time"
-						name="endTimeValue"
-						id="end-time-value" 
-						onchange="onEndTimeValueChange(this.value)"
-						/>
+					<h3>Enter what time you will clock off at</h3>
+					<select onchange="onEndTimeValueChange(this.value)"
+					placehlder=""
+					name="endTimeValue"
+					id="end-time-value" 
+					>
+						<option value=""></option>
+						<option value="5">5pm</option>
+						<option value="5.5">5:30pm</option>
+						<option value="6">6pm</option>
+						<option value="6.5">6:30pm</option>
+						<option value="7">7pm</option>
+						<option value="7.5">7:30pm</option>
+						<option value="8">8pm</option>
+						<option value="8.5">8:30pm</option>
+						<option value="9">9pm</option>
+						<option value="9.5">9:30pm</option>
+						<option value="10">10pm</option>
+						<option value="10.5">10:30pm</option>
+						<option value="11">11pm</option>
+						<option value="11.5">11:30pm</option>
+						<option value="12">12am</option>
+						<option value="12.5">12:30am</option>
+						<option value="13">1am</option>
+						<option value="13.5">1:30am</option>
+						<option value="14">2am</option>
+						<option value="14.5">2:30am</option>
+						<option value="15">3am</option>
+						<option value="15.5">3:30am</option>
+						<option value="16">4am</option>
+						<option value="16.5">4:30am</option>
+					</select>
 					<br>
 					<button type="button" id="fire-wage-calculator-button" onclick="onFireWageCalculatorButton()">
 						Calculate Nightly Wage
