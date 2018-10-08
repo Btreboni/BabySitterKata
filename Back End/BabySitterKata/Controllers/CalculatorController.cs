@@ -1,25 +1,36 @@
-﻿using BabySitterKata.Services.Implementations;
+﻿using BabySitterKata.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BabySitterKata.Controllers
 {
+    [Produces("application/json")]
     [Route("api/calculate")]
     public class CalculatorController : Controller
     {
-        private readonly CalculatorServiceImpl _calculatorService;
+        private readonly ICalculatorService _calculatorService;
 
-        public CalculatorController(CalculatorServiceImpl calculatorService)
+        public CalculatorController(ICalculatorService calculatorService)
         {
             _calculatorService = calculatorService;
         }
 
-        // POST api/calculate
-        [HttpPost]
+        //// GET api/calculate
+        //[HttpGet]
+        //[ProducesResponseType(typeof(string), statusCode: 200)]
+        //public IActionResult GetLaunchDivisions()
+        //{
+        //    var test = "TESTING";
+
+        //    return Ok(test);
+        //}
+
+        // POST api/calculate/wages
+        [HttpPost("wages")]
         [ProducesResponseType(typeof(string), statusCode: 201)]
         public IActionResult Post([FromBody]Models.HourlyDataDto data)
         {
-
-            return Ok();
+            var test = _calculatorService.CalculateNightlyWage(data);
+            return Ok(test);
         }
     }
 }

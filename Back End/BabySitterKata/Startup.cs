@@ -28,6 +28,7 @@ namespace BabySitterKata
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ICalculatorService, CalculatorServiceImpl>();
+            services.AddScoped<ICalculatorService, CalculatorServiceImpl>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
